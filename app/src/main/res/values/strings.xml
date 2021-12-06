@@ -24,11 +24,16 @@
     <string name="text_title">Android Tutorials Hub</string>
     <string name="EnterName">Enter Name</string>
     <string name="password">Password</string>
-    <string name="login">Login</string>
+    <string name="login">Login Screen</string>
     <string name="signup">Signup</string>
     <string name="active_donor">Active Donor</string>
     <string name="search">search</string>
     <string name="setting">Settings</string>
     <string name="new_member">New Member</string>
     <string name="newOrNot">Already a member</string>
+    <string name="country">Country</string>
+    <string name="status">Status</string>
+    <string name="contact">Contact</string>
+    <string name="bloodgroup">Bloodgroup</string>
+    <string name="register">Register</string>
 </resources>
