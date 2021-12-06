@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
                     if(checkUserAndPass==true)
                     {
                         Toast.makeText(LoginActivity.this,"Sign in Successfull",Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(),ViewDonors.class);
                         startActivity(intent);
                     }
                     else

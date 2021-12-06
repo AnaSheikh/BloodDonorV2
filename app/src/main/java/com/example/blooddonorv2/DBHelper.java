@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -60,5 +62,25 @@ public class DBHelper extends SQLiteOpenHelper {
         else
             return false;
 
+    }
+    public ArrayList<Model> readDonors(){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursorDonors = db.rawQuery("Select * from Users",null);
+        ArrayList<Model> donors = new ArrayList<>();
+
+        if(cursorDonors.moveToFirst())
+        {
+            do{
+                donors.add(new Model(cursorDonors.getString(1),
+                        cursorDonors.getString(2),
+                        cursorDonors.getString(3),
+                        cursorDonors.getString(4),
+                        cursorDonors.getString(5)));
+            }
+            while (cursorDonors.moveToNext());
+        }
+        cursorDonors.close();
+        return donors;
     }
 }
