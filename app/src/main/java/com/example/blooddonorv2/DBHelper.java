@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper {
 
     public static final String DBNAME= "BloodDonor.db";
-
+    //THis is for test
     public DBHelper(Context context) {
         super(context, "BloodDonor.db", null, 1);
     }
