@@ -1,8 +1,6 @@
 package com.example.blooddonorv2;
 
 
-import static androidx.recyclerview.widget.RecyclerView.*;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +24,7 @@ public class DonorAdapter extends RecyclerView.Adapter<DonorAdapter.ViewHolder> 
     public  class ViewHolder extends RecyclerView.ViewHolder{
         TextView mBlood,mName,mCountry,mStatus,mContact;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
 
             mBlood = itemView.findViewById(R.id.textView1);
@@ -39,20 +37,19 @@ public class DonorAdapter extends RecyclerView.Adapter<DonorAdapter.ViewHolder> 
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public DonorAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_donor,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.donor,parent,false);
         return new ViewHolder(view);
     }
 
 
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            Model modal = DonorArrayList.get(position);
-            holder.mBlood.setText(modal.getBlood());
-            holder.mContact.setText(modal.getContact());
-            holder.mCountry.setText(modal.getCountry());
-            holder.mName.setText(modal.getName());
-            holder.mStatus.setText(modal.getStatus());
+    public void onBindViewHolder(final DonorAdapter.ViewHolder holder, int position) {
+            holder.mBlood.setText(DonorArrayList.get(position).getBlood());
+            holder.mContact.setText(DonorArrayList.get(position).getContact());
+            holder.mCountry.setText(DonorArrayList.get(position).getCountry());
+            holder.mName.setText(DonorArrayList.get(position).getName());
+            holder.mStatus.setText(DonorArrayList.get(position).getStatus());
 
     }
 

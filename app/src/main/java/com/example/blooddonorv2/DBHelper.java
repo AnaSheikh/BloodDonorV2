@@ -64,7 +64,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
     public ArrayList<Model> readDonors(){
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursorDonors = db.rawQuery("Select * from Users",null);
         ArrayList<Model> donors = new ArrayList<>();

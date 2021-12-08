@@ -3,6 +3,7 @@ package com.example.blooddonorv2;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,18 +18,18 @@ public class ViewDonors extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_donor);
+        setContentView(R.layout.recycler_view);
 
-        DonorArrayList = new ArrayList<>();
-
-        DonorArrayList = DB.readDonors();
-
-        adapter = new DonorAdapter(DonorArrayList,ViewDonors.this);
-        donorRV = findViewById(R.id.viewdonors);
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ViewDonors.this,RecyclerView.VERTICAL,false);
-        donorRV.setLayoutManager(linearLayoutManager);
-
+        donorRV = (RecyclerView) findViewById(R.id.viewdonors);
+        DB = new DBHelper(this);
+        DisplayDonors();
+    }
+    public void DisplayDonors()
+    {
+        DonorArrayList = new ArrayList<>(DB.readDonors());
+        donorRV.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        donorRV.setItemAnimator(new DefaultItemAnimator());
+        adapter = new DonorAdapter(DonorArrayList,getApplicationContext());
         donorRV.setAdapter(adapter);
     }
 }
