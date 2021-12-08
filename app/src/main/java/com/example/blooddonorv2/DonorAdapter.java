@@ -11,10 +11,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
 public class DonorAdapter extends RecyclerView.Adapter<DonorAdapter.ViewHolder> {
 
     ArrayList<Model> DonorArrayList;
     Context context;
+    List<Model> modelList;
+
 
     public DonorAdapter(ArrayList<Model> donorArrayList, Context context) {
         this.DonorArrayList = donorArrayList;
@@ -57,5 +62,45 @@ public class DonorAdapter extends RecyclerView.Adapter<DonorAdapter.ViewHolder> 
     @Override
     public int getItemCount() {
         return DonorArrayList.size();
+    }
+    public void filter(String charText)
+    {
+        charText = charText.toLowerCase(Locale.getDefault());
+        modelList.clear();
+        if(charText.length()==0)
+        {
+            modelList.addAll(DonorArrayList);
+        }
+        else {
+            for(Model model : DonorArrayList)
+            {
+                if(model.getName().toLowerCase(Locale.getDefault())
+                    .contains(charText)){
+                    modelList.add(model);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+    public void bloodfilter(String charText)
+    {
+        charText=  charText.toLowerCase(Locale.getDefault());
+        modelList.clear();
+        if(charText.length()==0)
+        {
+            modelList.addAll(DonorArrayList);
+        }
+        else {
+            for (Model model : DonorArrayList)
+            {
+                if(model.getBlood().toLowerCase(Locale.getDefault())
+                .contains(charText)){
+                    modelList.add(model);
+                }
+            }
+        }
+        notifyDataSetChanged();
+
+
     }
 }
